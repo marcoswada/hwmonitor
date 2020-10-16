@@ -22,6 +22,7 @@ Main sources used on development:
 
 ## Usage
 Build it on Visual Studio (tested on Visual Studio Community edition 2017 and 2019)
+Note that you'll have to add the openhardwaremonitorlib.dll as a reference before building it. Download it from [Official location](https://openhardwaremonitor.org/downloads/)
 Install it as a service with the "Developer Command Line tool" using the InstallUtil command:
 For example
 ```

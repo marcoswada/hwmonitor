@@ -37,7 +37,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="OpenHardwareMonitorLib">
-      <HintPath>..\..\..\..\Desktop\OpenHardwareMonitor\OpenHardwareMonitorLib.dll</HintPath>
+      <HintPath>..\..\..\..\..\Desktop\OpenHardwareMonitor\OpenHardwareMonitorLib.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration.Install" />

@@ -146,6 +146,10 @@ namespace hwmonitor_service
                                 retval += "\"Data\",\"Unit\":";
                                 retval += "\"GB\"";
                                 break;
+                            case SensorType.Factor:
+                                retval += "\"Factor\",\"Unit\":";
+                                retval += "\"???\"";                    // Not documented
+                                break;
                             case SensorType.Fan:
                                 retval += "\"Fan\",\"Unit\":";
                                 retval += "\"RPM\"";
@@ -162,9 +166,21 @@ namespace hwmonitor_service
                                 retval += "\"Load\",\"Unit\":";
                                 retval += "\"%\"";
                                 break;
+                            case SensorType.Power:
+                                retval += "\"Power\",\"Unit\":";
+                                retval += "\"W\"";                       // Not documented
+                                break;
+                            case SensorType.SmallData:
+                                retval += "\"SmallData\",\"Unit\":";
+                                retval += "\"???\"";                     // Not documented
+                                break;
                             case SensorType.Temperature:
                                 retval += "\"Temperature\",\"Unit\":";
                                 retval += "\"&deg;C\"";
+                                break;
+                            case SensorType.Throughput:
+                                retval += "\"Temperature\",\"Unit\":";
+                                retval += "\"???\"";                     // Not documented
                                 break;
                             case SensorType.Voltage:
                                 retval += "\"Voltage\",\"Unit\":";
@@ -173,10 +189,13 @@ namespace hwmonitor_service
                             default:
                                 break;
                         }
+                        float v = (float)computer.Hardware[i].SubHardware[k].Sensors[shs].Value;
+                        float min = (float)computer.Hardware[i].SubHardware[k].Sensors[shs].Min;
+                        float max = (float)computer.Hardware[i].SubHardware[k].Sensors[shs].Max;
                         retval += ",\"Name\":\"" + computer.Hardware[i].SubHardware[k].Sensors[shs].Name + "\"," +
-                            "\"Value\":" + computer.Hardware[i].SubHardware[k].Sensors[shs].Value.ToString() + "," +
-                            "\"Min\":" + computer.Hardware[i].SubHardware[k].Sensors[shs].Min.ToString() + "," +
-                            "\"Max\":" + computer.Hardware[i].SubHardware[k].Sensors[shs].Max.ToString();
+                            "\"Value\":" + v.ToString(System.Globalization.CultureInfo.InvariantCulture) + "," +
+                            "\"Min\":" + min.ToString(System.Globalization.CultureInfo.InvariantCulture) + "," +
+                            "\"Max\":" + max.ToString(System.Globalization.CultureInfo.InvariantCulture);
                         retval += "},";
                     }
                     if (retval.EndsWith(","))
@@ -208,6 +227,10 @@ namespace hwmonitor_service
                                 retval += "\"Data\",\"Unit\":";
                                 retval += "\"GB\"";
                                 break;
+                            case SensorType.Factor:
+                                retval += "\"Factor\",\"Unit\":";
+                                retval += "\"???\"";                    // Not documented
+                                break;
                             case SensorType.Fan:
                                 retval += "\"Fan\",\"Unit\":";
                                 retval += "\"RPM\"";
@@ -224,9 +247,21 @@ namespace hwmonitor_service
                                 retval += "\"Load\",\"Unit\":";
                                 retval += "\"%\"";
                                 break;
+                            case SensorType.Power:
+                                retval += "\"Power\",\"Unit\":";
+                                retval += "\"W\"";                       // Not documented
+                                break;
+                            case SensorType.SmallData:
+                                retval += "\"SmallData\",\"Unit\":";
+                                retval += "\"???\"";                     // Not documented
+                                break;
                             case SensorType.Temperature:
                                 retval += "\"Temperature\",\"Unit\":";
                                 retval += "\"&deg;C\"";
+                                break;
+                            case SensorType.Throughput:
+                                retval += "\"Temperature\",\"Unit\":";
+                                retval += "\"???\"";                     // Not documented
                                 break;
                             case SensorType.Voltage:
                                 retval += "\"Voltage\",\"Unit\":";
@@ -235,10 +270,13 @@ namespace hwmonitor_service
                             default:
                                 break;
                         }
+                        float v = (float)computer.Hardware[i].Sensors[j].Value;
+                        float min = (float)computer.Hardware[i].Sensors[j].Min;
+                        float max = (float)computer.Hardware[i].Sensors[j].Max;
                         retval += ",\"Name\":\"" + computer.Hardware[i].Sensors[j].Name + "\", " +
-                            "\"Value\":" + computer.Hardware[i].Sensors[j].Value.ToString() + "," +
-                            "\"Min\":" + computer.Hardware[i].Sensors[j].Min.ToString() + "," +
-                            "\"Max\":" + computer.Hardware[i].Sensors[j].Max.ToString();
+                            "\"Value\":" + v.ToString(System.Globalization.CultureInfo.InvariantCulture) + "," +
+                            "\"Min\":" + min.ToString(System.Globalization.CultureInfo.InvariantCulture) + "," +
+                            "\"Max\":" + max.ToString(System.Globalization.CultureInfo.InvariantCulture);
                         retval += "},";       
                     }
                     if (retval.EndsWith(","))
